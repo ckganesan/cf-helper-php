@@ -30,7 +30,7 @@ You can access the service binding or application information through the servic
 For example you have a service called `database` with this credentials:
 ```json
 {
-    "host": "localhost",
+    "hostname": "localhost",
     "username": "jojo",
     "password": "toto",
     "port": "3306"
@@ -41,7 +41,7 @@ You can simply get your service like this:
 $serviceManager = $cfHelper->getServiceManager();
 $dbService = $serviceManager->getService('database'); //or regular expression example: getService('.*database.*')
 //and for example get the host credential
-$host = $dbService->getValue('host');//or regular expression example: getValue('ho[A-Za-z]+')
+$host = $dbService->getValue('hostname');//or regular expression example: getValue('ho[A-Za-z]+')
 
 //get all your services
 $services = $serviceManager->getAllServices();
