@@ -130,11 +130,11 @@ class CfHelper
         if (substr($methodName, 0, 3) !== 'get') {
             throw new \Exception('Method ' . $methodName . ' not exists');
         }
-        if (substr($methodName, -strlen("Connector")) !== "Connector") {
+        $strSize = strlen("Connector");
+        if (substr($methodName, -$strSize) !== "Connector") {
             throw new \Exception('Method ' . $methodName . ' not exists');
         }
-        $connectorName = substr($methodName, 3);
-        $connectorName = substr_replace($connectorName, "Connector", 0);
+        $connectorName = strtolower(substr($methodName, 3, $strSize - 1));
 
         $connector = $this->getConnector($connectorName);
         if (isset($this->connectorsState[$connector->getName()])) {
